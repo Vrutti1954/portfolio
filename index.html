@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio vrutti</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      font-family:"Poppins", sans-serif ;
+      box-sizing: border-box;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+
+    body{
+      background: #080808;
+      color: white;
+    }
+
+    #header{
+      width: 100%;
+      height: 100vh;
+      background-image: url("https://img.freepik.com/premium-photo/abstract-geometric-background-with-connecting-points-lines-abstract-black-digital-background-network-concept-structure-big-data-complex-with-compounds-3d-rendering_634443-655.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container{
+      padding: 10px 10%;
+    }
+
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo{
+      width: 140px;
+    }
+
+    nav ul li{
+      display: inline-block;
+      list-style: none;
+      margin: 10px 20px;
+    }
+
+    nav ul li a{
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+    }
+
+    nav ul li a::after{
+      content: '';
+      width: 0;
+      height: 3px;
+      background: palegoldenrod;
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      transition: 0.5s;
+    }
+
+
+    nav ul li a:hover::after{
+      width: 100%;
+
+    }
+
+    .header-text{
+      margin: 20%;
+      font-size: 30px;
+    }
+
+    .header-text h1{
+      font-size: 60px;
+      margin-top: 20px;
+    }
+
+    .header-text h1 span{
+      color: palegoldenrod;
+
+    }
+
+    /*----------about--------------*/
+
+    #about{
+      padding: 80px 80px ;
+      color: whitesmoke;
+      background-image: url("https://img.freepik.com/premium-photo/abstract-geometric-background-with-connecting-points-lines-abstract-black-digital-background-network-concept-structure-big-data-complex-with-compounds-3d-rendering_634443-655.jpg");
+    }
+
+    .row{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .about-col-1{
+
+      flex-basis: 35%;
+    }
+    .about-col-1 img{
+      width: 100%;
+      border-radius: 15px;
+
+    }
+    .about-col-2{
+      flex-basis: 60%;
+    }
+
+    .sub-title{
+      font-size: 70px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .tab-titles{
+      display: flex;
+      margin: 20px 0 40px;
+    }
+
+    .tab-links{
+      margin-right: 50px;
+      font-size: 19px;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+
+    }
+
+    .tab-links::after{
+      content: '';
+      width: 0;
+      height: 3px;
+      background: palegoldenrod;
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      transition: 0.5s;
+    }
+
+    .tab-links.active-link::after{
+      width: 50%;
+    }
+
+    .tab-contents ul li{
+      list-style: none;
+      margin: 10px 0;
+    }
+
+    .tab-contents ul li span{
+      color: palegoldenrod;
+      font-size: 14px;
+    }
+
+    .tab-contents{
+      display: none;
+    }
+
+    .tab-contents.active-tab{
+      display: block;
+    }
+
+    /*  ----------------services----------*/
+
+    #services{
+      padding: 30px 0;
+      background-image: url("https://img.freepik.com/premium-photo/abstract-geometric-background-with-connecting-points-lines-abstract-black-digital-background-network-concept-structure-big-data-complex-with-compounds-3d-rendering_634443-655.jpg");
+    }
+
+    .services-list{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 40px;
+      margin-top: 50px;
+
+    }
+    .services-list div{
+      background: darkgrey;
+      padding: 40px;
+      font-size: 13px;
+      font-weight: 300;
+      border-radius: 10px;
+      transition: 0.5s, transform 0.5s;
+
+    }
+
+    .services-list div h2{
+      font-size: 30px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .services-list div a{
+      text-decoration: none;
+      color: palegoldenrod;
+      font-size: 12px;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .services-list div:hover{
+      color: black;
+      background: palegoldenrod;
+      transform: translateY(-10px);
+    }
+
+
+    /*-----------------portfolio---------------*/
+
+    #portfolio{
+      padding: 50px 0;
+      background-image: url("https://img.freepik.com/premium-photo/abstract-geometric-background-with-connecting-points-lines-abstract-black-digital-background-network-concept-structure-big-data-complex-with-compounds-3d-rendering_634443-655.jpg");
+    }
+
+    .work-list{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 40px;
+      margin-top: 50px;
+    }
+
+
+    .work{
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work img{
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+
+
+    .layer{
+      width: 100%;
+      height: 0;
+      background: linear-gradient(rgba(0,0,0,0.5), palegoldenrod);
+      border-radius: 10px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 40px;
+      text-align: center;
+      font-size: 14px;
+      transition: height 0.5s;
+    }
+
+
+    .layer h3{
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .work:hover img{
+      transform: scale(1.1);
+    }
+
+
+    .work:hover .layer{
+      height: 100%;
+    }
+
+    /*-----------contact----------*/
+    #contact{
+      background-image: url("https://img.freepik.com/premium-photo/abstract-geometric-background-with-connecting-points-lines-abstract-black-digital-background-network-concept-structure-big-data-complex-with-compounds-3d-rendering_634443-655.jpg");
+    }
+    .contact-left{
+      flex-basis: 35%;
+    }
+
+    .contact-right{
+      flex-basis: 60%;
+    }
+    .contact-left p{
+      margin-top: 30px;
+    }
+
+    .social-icon{
+      padding: 10px 10px;
+      display: inline-block;
+      background: lightgrey;
+      color: black;
+    }
+
+    .btn.btn2{
+      padding: 6px 6px;
+      display: -moz-inline-box;
+      background: lightgray;
+      color: black;
+      box-sizing: inherit;
+    }
+
+    .btn.btn2:hover{
+      background: goldenrod;
+      color: black;
+    }
+
+    .contact-left form.btn.btn2{
+      padding: 20px 20px;
+    }
+
+    .contact-right form{
+      width: 100%;
+    }
+
+    form input, form textarea{
+      width: 100%;
+      border: 0;
+      outline: none;
+      background: lightgray;
+      padding: 15px;
+      margin: 15px 0;
+      color: grey;
+      font-size: 18px;
+      border-radius: 6px;
+    }
+
+    .form.btn2{
+      padding: 60px 60px;
+      font-size: 18px;
+      margin: 20px;
+      cursor: pointer;
+    }
+
+    .copyright{
+      width: 100%;
+      text-align: center;
+      padding: 25px 0;
+      background: white;
+      color: #080808;
+      font-weight: 300;
+      margin-top: 20px;
+
+    }
+
+    @media only screen and (max-width: 600px){
+
+    }
+  </style>
+</head>
+<body>
+<div id="header">
+  <div class="container">
+    <nav>
+      <img src="logo1-removebg-preview.png" class="logo">
+      <ul>
+        <li><a href="#header">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-text">
+      <p>Student of Computer systems technology</p>
+      <h1> Hi, I'm <span>Vrutti Patel</span></h1>
+
+    </div>
+  </div>
+</div>
+<!-------------------about-------------->
+<div id="about">
+  <div class="row">
+    <div class="about-col-1">
+      <img src="user%20me.jpeg">
+    </div>
+    <div class="about-col-2">
+      <h1 class="sub-title">About Me</h1>
+      <p>Greetings! I'm Vrutti Patel, and welcome to my professional portfolio. As an aspiring professional in the field of technology, this collection serves as a comprehensive showcase of my academic endeavors, projects, and experiences. Currently pursuing a degree in Computer Systems Technology at GBC College, I am enthusiastic about exploring and mastering the intricate world of technology. Within these digital pages, you will find a glimpse into my academic achievements, hands-on projects, and a reflection of my commitment to continuous learning and innovation. Join me on this journey through my portfolio, where technology meets passion, and every project tells a unique story of growth and proficiency. </p>
+
+      <div class="tab-titles">
+        <p class="tab-links active-link" onclick="opentab('Skills')">Skills</p>
+        <p class="tab-links" onclick="opentab('Experience')">Experience</p>
+        <p class="tab-links" onclick="opentab('Education')">Education</p>
+      </div>
+
+      <div class="tab-contents active-tab" id="Skills">
+        <ul>
+          <li><span>Programming language</span><BR>Java, Python, C++</li>
+          <li><span>System Administration</span><BR>Experience in setting up and maintaining computer systems, including operating system installation, configuration, and troubleshooting.</li>
+          <li><span>Network Management</span><BR>Knowledge of network protocols, configuration, and troubleshooting. Familiarity with tools like Wireshark.</li>
+          <li><span>Database Management</span><BR>Skills in designing, implementing, and managing databases using technologies like MySQL, PostgresSQL, or Oracle</li>
+          <li><span>Cyber-security Awareness</span><BR>Understanding of basic cyber-security principles, including knowledge of encryption, firewalls, and security best practices.</li>
+          <li><span>Software Development</span><BR>Ability to develop software applications, understanding of software development life cycle (SDLC), and proficiency in relevant frameworks.</li>
+          <li><span>Scripting</span><BR>Scripting skills in languages like Bash, PowerShell, or other scripting languages for automation and task simplification.</li>
+        </ul>
+      </div>
+
+      <div class="tab-contents" id="Experience">
+        <ul>
+          <li><span>Academic Projects</span><BR>Led a comprehensive project at GBC College in the Computer Systems Technology program. Focused on optimizing system performance through the implementation of a new algorithm. Deepened understanding of system architecture and refined programming skills in Java.As well as learning networking portion of my program with CCNA courses and CISCO</li>
+          <li><span>Extracurricular Involvement</span><BR>Actively participated in seminar.Contributed significantly to coding competition and networking . Demonstrated ability to thrive fast-paced,team-oriented tech challenges.</li>
+          <li><span>Continuous Learning and Certifications</span><BR>Committed to staying abreast of industry trends through continuous learning.Gaining practical knowledge of all networks.</li>
+        </ul>
+      </div>
+
+      <div class="tab-contents" id="Education">
+        <ul>
+          <li><span>Computer Systems Technology</span><BR>pursuing Advanced Diploma Degree in George brown College since january 2023 to april 2025.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!--------------------services------------------------->
+
+<div id="services">
+  <div class="container">
+    <h1 class="sub-title">My Services</h1>
+    <div class="services-list">
+      <div>
+        <h2>Network Design And Implementation</h2>
+        <p>Develop customized network solutions based on clients' requirements. Implement and configure networking hardware and software for optimal performance. Ensure scalability and adaptability for future growth</p>
+        <a href="#">learn more</a>
+      </div>
+
+      <div>
+        <h2>Network Security Consulting</h2>
+        <p>Conduct security assessments to identify vulnerabilities in existing networks. Implement and configure security measures such as firewalls, intrusion detection systems, and encryption. Develop and enforce security policies to protect against cyber threats.</p>
+        <a href="#">Learn more</a>
+      </div>
+
+      <div>
+        <h2>Wireless Network Optimization</h2>
+        <p>Design and optimize wireless networks for improved coverage and performance. Implement advanced technologies like Wi-Fi 6 for enhanced speed and reliability. Conduct site surveys to identify and mitigate interference.</p>
+        <a href="#">Learn more</a>
+      </div>
+
+      <div>
+        <h2>Network Troubleshooting And Support</h2>
+        <p>Provide on-demand support to diagnose and resolve network issues. Implement monitoring tools for proactive issue identification. Offer maintenance services to ensure network reliability and uptime</p>
+        <a href="#">Learn more</a>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-----------------portfolio----------------->
+<div id="portfolio">
+  <div class="container">
+    <h1 class="sub-title">My work</h1>
+    <div class="work-list">
+      <div class="work">
+        <img src="work1vruti.png">
+        <div class="layer">
+          <h3>Campus-Wide Wi-Fi Improvement Project</h3>
+          <p>Led a team in optimizing Wi-Fi connectivity across the university campus. Conducted a comprehensive site survey and implemented strategies for signal optimization.</p>
+        </div>
+      </div>
+
+      <div class="work">
+        <img src="work2vrutti.png">
+        <div class="layer">
+          <h3>Secure File Sharing System Development</h3>
+          <p>Collaborated on the design and implementation of a secure file-sharing system. Integrated encryption protocols and access controls for enhanced data security</p>
+        </div>
+      </div>
+
+      <div class="work">
+        <img src="work3vrutti.png">
+        <div class="layer">
+          <h3>Community Wi-Fi Project</h3>
+          <p>Led a community service project providing Wi-Fi connectivity to underserved areas. Designed and implemented a cost-effective and scalable solution for community access.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-----------------contact--------------------->
+
+<div id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="contact-left">
+        <h1 class="sub-title">Contact Me</h1>
+        <p>Vruttipatel7573@gmail.com</p>
+        <p>0123456789</p>
+        <div class="social-icons">
+          <br>
+          <a href="https://linkedin.com/in/vrutti-patel-5b446b261" class="social-icon">linkedin</a>
+        </div>
+        <br>
+        <a href="resume.pdf" download class="btn btn2">Download Resume</a>
+      </div>
+
+      <div class="contact-right">
+        <form>
+          <input type="text" name="name" placeholder="your name" required>
+          <input type="email" name="email" placeholder="your email" required>
+          <textarea name="message" rows="6" placeholder="your Message"></textarea>
+          <button type="submit" class="btn btn2">Submit</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>Copyright @ vrutti patel </p>
+
+  </div>
+</div>
+
+
+
+
+
+
+<!--suppress JSUnusedGlobalSymbols -->
+<script>
+
+  var tablinks = document.getElementsByClassName("tab-links");
+  var tabcontents = document.getElementsByClassName("tab-contents");
+
+  function opentab(tabname){
+    for(tablink of tablinks){
+      tablink.classList.remove("active-link");
+    }
+
+    for(tabcontent of tabcontents){
+      tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+
+  }
+
+</script>
+
+</body>
+</html>
